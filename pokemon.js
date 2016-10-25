@@ -10,10 +10,6 @@ var pokemon = (function(){
         return pokedata[id - 1];
     }
 
-    function image(id) {
-        return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + id + ".png";
-    }
-
     function battle(pokemon, other) {
         var pokemod1 = 1;
         var pokemod2 = 1;
@@ -798,4 +794,6 @@ var pokemon = (function(){
     }
 }());
 
-module.exports = pokemon;
+if (typeof module !== 'undefined') {
+    module.exports = pokemon;
+}
