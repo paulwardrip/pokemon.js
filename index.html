@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pokemon.js</title>
+        <script type="text/javascript" src="pokemon.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <style type="text/css">
+            .pokeball {
+                background: url(data:image/png;base64,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);
+                width: 50px;
+                height: 50px;
+                display: inline-block;
+            }
+            .center {
+                text-align: center;
+            }
+
+            .poketype {
+                width: 100px; border: 1px solid black; margin: 2px;
+                color: white;
+                font-weight: bold;
+            }
+
+            .poketype-normal {
+                background: palegoldenrod;
+            }
+
+            .poketype-fighting {
+                background: darkred;
+            }
+
+            .poketype-flying {
+                background: mediumpurple;
+            }
+
+            .poketype-poison {
+                background: purple;
+            }
+
+            .poketype-ground {
+                background: beige;
+            }
+
+            .poketype-rock {
+                background: tan;
+            }
+
+            .poketype-bug {
+                background: greenyellow;
+            }
+
+            .poketype-ghost {
+                background: rebeccapurple;
+            }
+
+            .poketype-steel {
+                background: darkgrey;
+            }
+
+            .poketype-fire {
+                background: orange;
+            }
+
+            .poketype-water {
+                background: cornflowerblue;
+            }
+
+            .poketype-grass {
+                background: green;
+            }
+
+            .poketype-electric {
+                background: yellow;
+            }
+
+            .poketype-psychic {
+                background: deeppink;
+            }
+
+            .poketype-ice {
+                background: lightskyblue;
+            }
+
+            .poketype-dragon {
+                background: blueviolet;
+            }
+
+            .poketype-dark {
+                background: black;
+            }
+
+            .poketype-fairy {
+                background: lightpink;
+            }
+
+            #spacer {
+                height: 200px;
+                border-bottom: 2px solid #C0C0C0;
+            }
+
+            body {
+                font-family: Verdana Arial Helvetica sans-serif;
+                font-size: 16px;
+            }
+        </style>
+    </head>
+    <body style="display: flex; align-items: center; justify-content: center">
+        <div>
+            <h3 id="state" class="center">Searching</h3>
+
+            <div id="score" class="center" style="display:none">
+                <div>Wins: <span id="wins" style="color: green">0</span></div>
+                <div>Losses: <span id="losses" style="color: red">0</span></div>
+            </div>
+
+            <div id="poke" style="display:none; margin-top: 50px">
+                <div class="center player" style="width: 225px; margin: 5px">
+                    <img class="img" />
+                    <div class="name"></div>
+                    <div class="types"></div>
+                    <div class="winner"></div>
+                </div>
+            </div>
+
+            <div id="catch" style="display:none" class="center">
+                <div class="pokeball"></div>
+                <div>Catch this Pokemon?</div>
+                <button id="yes">Yes</button>
+                <button id="no">No</button>
+            </div>
+
+            <div id="battle" style="margin-top: 150px">
+                <div id="spacer"></div>
+            </div>
+        </div>
+
+        <div id="opponent" style="display:none">
+            <div class="center opponent" style="width: 225px; margin: 5px; display: inline-block">
+                <img class="img" />
+                <div class="name"></div>
+                <div class="types"></div>
+                <div class="winner"></div>
+            </div>
+        </div>
+    </body>
+
+<script type="text/javascript">
+    var waiting = true;
+    var state = "Searching";
+    var mypoke;
+    var found;
+
+    var wins = 0;
+    var losses = 0;
+
+    function search() {
+        window.setTimeout(function () {
+            found = pokemon.getRandom();
+            waiting = false;
+            state = "Pokemon Found";
+            $("#poke .img").attr("src", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" +
+                    found.id + ".png");
+            $("#poke .name").html(found.name);
+            $("#poke .types").html("");
+            found.types.forEach(function (type) {
+                $("#poke .types").append("<span style='display: inline-block' class='poketype poketype-" +
+                        type + "'>" + type + "</span>")
+            });
+            $("#catch,#poke").show();
+        }, Math.random() * 10000);
+    }
+
+    function battle() {
+        window.setTimeout(function () {
+            var opponent = pokemon.getRandom();
+            state = "Battle";
+            var $elem = $($("#opponent").html());
+            $elem.find(".img").attr("src",
+                    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" +
+                    opponent.id + ".png");
+            $elem.find(".name").html(opponent.name);
+            $elem.find(".types").html("");
+            opponent.types.forEach(function (type) {
+                $elem.find(".types").append("<span style='display: inline-block' class='poketype poketype-" +
+                        type + "'>" + type + "</span>")
+            });
+
+            var $div = $("<div></div>");
+            var $player = $("#poke").find(".player").clone();
+            $player.css({display: "inline-block"});
+            $div.append($player);
+            $div.append($elem);
+            $("#poke").hide();
+            $("#battle").prepend($("#spacer").detach());
+            $("#battle").prepend($div);
+            window.scrollTo(0,0);
+
+            window.setTimeout(function () {
+                var result = pokemon.battle(mypoke, opponent);
+                if (result.win) wins++; else losses++;
+                $("#wins").html(wins);
+                $("#losses").html(losses);
+                $("#score").show();
+                $("#battle .opponent:first").css({ background: result.win ? "#FFF0F0" : "#F0FFF0" });
+                $("#battle .player:first").css({ background: result.win ? "#F0FFF0" : "#FFF0F0" });
+                state = "Finding Pokemon";
+                battle();
+
+            }, 3000);
+        }, Math.random() * 30000);
+    }
+
+    $("#yes").click(function () {
+        mypoke = found;
+        state = "Finding Pokemon";
+        waiting = true;
+        $("#catch").hide();
+        battle();
+    });
+
+    $("#no").click(function () {
+        $("#catch,#poke").hide();
+        state = "Searching";
+        waiting = true;
+        found = null;
+        search();
+    });
+
+    window.setInterval(function () {
+        if (waiting) {
+            if ($("#state").html().indexOf(".....") > -1) {
+                $("#state").html(state);
+            } else {
+                $("#state").html(state + ($("#state").html().match(/\.{1,4}/) || [""])[0] + ".");
+            }
+        } else {
+            $("#state").html(state);
+        }
+    }, 200);
+
+    search();
+</script>
+</html>
