@@ -23,7 +23,9 @@ var pokemon = (function(){
 
         var result = {
             win: false,
-            by: "random"
+            by: "random",
+            player: pokemod1,
+            opponent: pokemod2
         };
 
         if (pokemod1 < pokemod2) {
