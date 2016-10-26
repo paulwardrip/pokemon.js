@@ -234,7 +234,7 @@
             $div.append("<div class='vs'><h3>VS</h3></div>");
             $div.append($elem);
             $("#poke").hide();
-            $("#log").append($("#battle").html());
+            $("#log").prepend($("#battle").html());
             $("#battle").html("");
             $("#battle").append($div);
             center($("#battle"));
