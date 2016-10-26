@@ -16,10 +16,17 @@ var pokemon = (function(){
 
         pokemon.types.forEach(function (poketype) {
             other.types.forEach(function (othertype) {
-                pokemod1 *= (typeMatch[poketype][othertype] || 1);
-                pokemod2 *= (typeMatch[othertype][poketype] || 1);
+                var mod1 = (typeMatch[poketype][othertype] !== undefined) typeMatch[poketype][othertype] : 1;
+                var mod2 = (typeMatch[othertype][poketype] !== undefined) typeMatch[othertype][poketype] : 1;
+                console.log (poketype + " vs " + othertype + ": " + mod1);
+                console.log (othertype + " vs " + poketype + ": " + mod2);
+                pokemod1 = pokemod1 * mod1;
+                pokemod2 = pokemod2 * mod2
             });
         });
+        
+        console.log ("player: " + pokemod1);
+        console.log ("opponent: " + pokemod2);
 
         var result = {
             win: false,
