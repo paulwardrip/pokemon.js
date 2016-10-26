@@ -284,6 +284,7 @@
 
                 state = "Finding Pokemon";
                 $("#log").css({ top: $(window).height() + "px", left: ($(window).width()/2) - ($("#log").width() / 2) + "px" });
+                center($(".ash"));
                 battle();
             }, 3000);
         }, (Math.random() * 10000) + 5000);
