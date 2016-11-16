@@ -2,15 +2,20 @@
 <html>
 <head>
     <title>Pokemon.js</title>
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <script type="text/javascript" src="pokemon.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/dot-luv/jquery-ui.css"/>
+
     <style type="text/css">
         .pokeball {
             background: url(data:image/png;base64,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);
             width: 50px;
             height: 50px;
             display: inline-block;
+            background-repeat: no-repeat;
         }
         .ash {
             width: 60px;
@@ -120,9 +125,10 @@
         #catch {
             position: absolute;
         }
-        #yes,#no {
-            height: 40px;
+        #yes,#no,#battle-go {
+            height: 50px;
             width: 125px;
+            border: 2px solid white;
         }
         #score,#state,.catchmessage {
             color: white
@@ -140,6 +146,13 @@
             padding: 30px 0;
             font-size: 30px;
         }
+        .team {
+            position: absolute;
+            background: white;
+            left: 0;
+            width: 100px;
+            height: 600px;
+        }
     </style>
 </head>
 <body>
@@ -147,6 +160,8 @@
         <div class="center heading"><div id="logo"></div><div class="headingtext">.js Simulator</div></div>
         <h3 id="state" class="center">Searching</h3>
         <div class="ash ash1"></div>
+
+        <div class="team" style="display: none"></div>
 
         <div id="score" class="center" style="display:none">
             <div>Wins: <span id="wins" style="color: green">0</span></div>
@@ -156,35 +171,39 @@
 
         <div id="catch" style="display:none" class="center">
             <div id="poke">
-                <div class="center player well" style="background: white;width: 250px; margin: 5px">
-                    <img class="img" />
-                    <div class="name"></div>
-                    <div class="types"></div>
-                    <div class="winner">&nbsp;</div>
-                </div>
             </div>
 
-            <div class="pokeball"></div>
-            <div class="catchmessage">Catch this Pokemon?</div>
-            <button id="yes">Yes</button>
-            <button id="no">No</button>
+            <button id="yes" class="pokeball" style="padding-left: 25px; width: 125px; color: white;">Catch</button>
+            <button id="no">Ignore</button>
         </div>
 
         <div id="battle">
-
         </div>
         <div id="log">
-
         </div>
     </div>
 
     <div id="opponent" style="display: none">
-        <div class="center opponent well" style="background: white; width: 250px; margin: 5px; display: inline-block">
+    </div>
+
+    <div id="poketemplate" style="display: none">
+        <div class="center well pokemon" style="background: white; width: 250px; margin: 5px; display: inline-block">
             <img class="img" />
             <div class="name"></div>
-            <div class="types"></div>
+            <div style="height: 28px">
+                <div class="types"></div>
+            </div>
             <div class="winner">&nbsp;</div>
         </div>
+    </div>
+
+    <div id="battle-control" class="center" style="display: none">
+        <div style="display: inline-block"><button id="battle-go">Battle!</button></div>
+        <div style="display: inline-block"><button class="pokeball" id="battle-catch" style="padding-left: 25px; width: 125px; color: white;">Catch</button></div>
+    </div>
+
+    <div id="teamdialog" style="display: none" title="Team is Full">
+        <p>Your team is full, select a Pokemon to replace with this Pokemon, or if you don't want to replace one, you may still battle.</p>
     </div>
 </body>
 
@@ -192,19 +211,44 @@
     var waiting = true;
     var state = "Searching";
     var mypoke;
+    var opponent;
     var found;
     var wins = 0;
     var losses = 0;
+    var team = [];
+    var inbattle = false;
+    var replaceme = false;
 
-    function render(elem, poke) {
+    function doCatch() {
+        inbattle = false;
+        if (team.length === 6) {
+            replaceme = true;
+            $("#teamdialog").dialog();
+            $("#teamdialog").show();
+        } else {
+            team[team.length] = opponent;
+            mypoke = opponent;
+            $("#poke").html("");
+            $("#poke").append(render("player", mypoke));
+            $("#battle").fadeOut();
+            renderTeam();
+            battle();
+        }
+    }
+
+    function render(who, poke) {
+        var elem = $("#poketemplate .pokemon").clone();
+        elem.addClass(who);
         elem.find(".img").attr("src", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" +
                 poke.id + ".png");
         elem.find(".name").html(poke.name);
         elem.find(".types").html("");
         poke.types.forEach(function (type) {
-            elem.find(".types").append("<span style='display: inline-block' class='poketype poketype-" +
+            elem.find(".types").append("<span style='display: inline-block;' class='poketype poketype-" +
                     type + "'>" + type + "</span>")
         });
+        elem.find(".types").hide();
+        return elem;
     }
 
     function search() {
@@ -212,7 +256,8 @@
             found = pokemon.getRandom();
             waiting = false;
             state = "Pokemon Found";
-            render($("#poke"), found);
+            $("#poke").html("");
+            $("#poke").append(render("player", found));
             $("#catch").fadeIn(2000);
             center($("#catch"));
             $(".ash").hide();
@@ -221,45 +266,63 @@
 
     function battle() {
         window.setTimeout(function () {
+            inbattle = true;
             $(".ash").hide();
             $("#battle").hide();
-            var opponent = pokemon.getRandom();
+            opponent = pokemon.getRandom();
             state = "Battle";
-            var $elem = $($("#opponent").html());
-            render($elem, opponent);
-            var $div = $("<div></div>");
+            waiting = false;
+            var $elem = render("opponent", opponent);
+            var $div = $("<div class='inner'></div>");
             var $player = $("#poke").find(".player").clone();
             $player.css({display: "inline-block"});
             $div.append($player);
-            $div.append("<div class='vs'><h3>VS</h3></div>");
+           // $div.append("<div class='vs'><h3>VS</h3></div>");
             $div.append($elem);
             $("#poke").hide();
-            $("#log").prepend($("#battle").html());
             $("#battle").html("");
             $("#battle").append($div);
+            $("#battle .types").hide();
+            $("#battle").append($("#battle-control").clone());
+            $("#battle #battle-control").show();
             center($("#battle"));
             $("#battle").fadeIn(2000);
 
-            window.setTimeout(function () {
+            function doBattle() {
+                inbattle = false;
+                replaceme = false;
+                $("#battle #battle-control").detach();
                 var result = pokemon.battle(mypoke, opponent);
                 if (result.win) wins++; else losses++;
                 $("#wins").html(wins);
                 $("#losses").html(losses);
                 $("#score").show();
 
-                function anim(elem, win) {
+                function anim(elem, win, then) {
                     var color = ["F","E","D","C","B","A",9,8,7,6,5,4,3,2,1];
                     var index = 0;
+                    var letter = "F";
+
                     function step(){
                         window.setTimeout(function () {
-                            elem.css({ background: win ? "#FFF" + color[index] + "F" + color[index] : "#F" + color[index] + "FFF" + color[index] });
+                            elem.css({ background: win ? "#FF" + letter + color[index] + letter + color[index] :
+                                "#" + letter + color[index] + "FF" + letter + color[index] });
                             index++;
-                            if (index < color.length) step();
+                            if (index < color.length) {
+                                step();
+                            } else if (letter === "F") {
+                                index = 0;
+                                letter = "E";
+                                step();
+                            } else {
+                                if (then) then();
+                            }
                         },150);
                     }
                     step();
                 }
 
+                $("#battle .winner").hide();
                 if (result.player > 1) {
                     $("#battle .player .winner").css({ color: "red" }).text("weakness");
                 } else if (result.player < 1) {
@@ -272,31 +335,45 @@
                     $("#battle .opponent .winner").css({ color: "green" }).text("resistance");
                 }
 
-                anim($("#battle .opponent:first"), result.win);
-                anim($("#battle .player:first"), !result.win);
+                $("#battle .winner").fadeIn(4000);
+                $("#battle .types").fadeIn(3000);
 
-                if ((result.win && mypoke.evolve && wins === 15) || (result.win && mypoke.evolve && wins === 30)) {
-                    $("#evolve").append("<div>" + mypoke.name + " evolved into " + mypoke.evolve.name + ".</div>");
-                    mypoke = pokemon.getPokemon(mypoke.evolve.id);
+                anim($("#battle .opponent"), result.win);
+                anim($("#battle .player"), !result.win, function () {
+                    if ((result.win && mypoke.evolve && wins === 15) || (result.win && mypoke.evolve && wins === 30)) {
+                        $("#evolve").append("<div>" + mypoke.name + " evolved into " + mypoke.evolve.name + ".</div>");
+                        mypoke = pokemon.getPokemon(mypoke.evolve.id);
+                        $("#poke").html("");
+                        $("#poke").append(render("player", mypoke));
+                    }
 
-                    render($("#poke"), mypoke);
-                }
+                    $("#log").prepend($("#battle").html());
+                    $("#log").css({ top: $(window).height() + "px", left: ($(window).width()/2) - ($("#log").width() / 2) + "px" });
 
-                state = "Finding Pokemon";
-                $("#log").css({ top: $(window).height() + "px", left: ($(window).width()/2) - ($("#log").width() / 2) + "px" });
-                center($(".ash"));
-                battle();
-            }, 3000);
-        }, (Math.random() * 10000) + 5000);
+                    $("#battle").fadeOut(5000, battle);
+                });
+            }
+
+            $("#battle #battle-go").click(doBattle);
+            $("#battle #battle-catch").click(doCatch);
+
+        }, (Math.random() * 10000) + 10000);
+
+        center($(".ash"));
         $(".ash").show();
-    }
-    $("#yes").click(function () {
-        mypoke = found;
+
         state = "Finding Pokemon";
         waiting = true;
+    }
+
+    $("#yes").click(function () {
+        team[team.length] = found;
+        mypoke = found;
         $("#catch").hide();
+        renderTeam();
         battle();
     });
+
     $("#no").click(function () {
         $(".ash").show();
         $("#catch").hide();
@@ -305,6 +382,7 @@
         found = null;
         search();
     });
+
     window.setInterval(function () {
         if (waiting) {
             if ($("#state").html().indexOf(".....") > -1) {
@@ -316,6 +394,7 @@
             $("#state").html(state);
         }
     }, 200);
+
     window.setInterval(function(){
         if ($(".ash").hasClass("ash1")) {
             $(".ash").removeClass("ash1").addClass("ash2");
@@ -324,9 +403,34 @@
         }
     },500);
 
+    function renderTeam() {
+        $(".team").html("");
+        team.forEach(function (poke,idx) {
+            var img = $("<img />");
+            img.attr ("src", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + poke.id + ".png");
+            img.css ({ margin: "2px", cursor: "pointer" });
+            img.click(function () {
+                if (inbattle) {
+                    mypoke = poke;
+                    $("#battle .player").detach();
+                    $("#poke").html("");
+                    $("#poke,#battle .inner").prepend(render("player", mypoke));
+                } else if (replaceme) {
+                    $("#teamdialog").dialog("close");
+                    team.splice(idx, 1);
+                    replaceme = false;
+                    doCatch();
+                }
+            });
+            $(".team").append(img);
+        });
+        $(".team").fadeIn(2000);
+    }
+
     function center(elem){
         elem.css({ top: ($(window).height()/2) - (elem.height() / 2) + "px", left: ($(window).width()/2) - (elem.width() / 2) + "px" });
     }
+    $(".team").css({ top: ($(window).height()/2) - 300 + "px" });
     center($(".ash"));
 
     search();
