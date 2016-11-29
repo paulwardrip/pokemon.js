@@ -797,6 +797,7 @@ var pokemon = (function(){
     ];
 
     return {
+        all: pokedata,
         getPokemon: getPokemon,
         getRandom: getRandom,
         battle: battle

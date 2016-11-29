@@ -74,13 +74,7 @@ function render(who, poke) {
     var $elem = $($("#poketemplate").html());
     $elem.addClass(who);
     function appendImage() {
-        $elem.find(".img").html("");
-        var img = new Image();
-        img.onerror = function () {
-          window.setTimeout(appendImage,5000);
-        };
-        img.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + poke.id + ".png";
-        $elem.find(".img").append(img);
+        $elem.find(".img").addClass(poke.name.toLowerCase());
     }
     appendImage();
     $elem.find(".name").html(poke.name);
@@ -235,8 +229,7 @@ function battle() {
 function renderTeam() {
     $(".team").html("");
     team.forEach(function (poke,idx) {
-        var img = $("<img />");
-        img.attr ("src", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + poke.id + ".png");
+        var img = $("<div class='img " + poke.name.toLowerCase() + "'></div>");
         img.css ({ margin: "2px", cursor: "pointer" });
         img.click(function () {
             if (inbattle) {

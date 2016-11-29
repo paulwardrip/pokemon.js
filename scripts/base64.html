@@ -1,17 +1,17 @@
 <html>
-
 <head>
-
+    <script type="text/javascript" src="pokemon.js"></script>
 </head>
 <body>
 <canvas id="canvas"></canvas>
-<textarea id="textarea" style="width: 100% height: 500px"></textarea>
+<textarea id="textarea" style="width: 100%; height: 500px"></textarea>
 <script>
     var i = 0;
+    var data = pokemon.all;
 
     function loadNext() {
         i++;
-        if (i <= 2) {
+        if (i <= data.length) {
             loadCanvas("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + i + ".png");
         }
     }
@@ -22,17 +22,21 @@
 
         // load image from data url
         var imageObj = new Image();
+        imageObj.crossOrigin = "anonymous";
         imageObj.onload = function() {
+            context.clearRect(0, 0, canvas.width, canvas.height);
             context.drawImage(this, 0, 0);
-            document.getElementById("textarea").value = document.getElementById("textarea").value + "\n" + i + ": { " + canvas.toDataURL() + " }";
-            loadNext();
+            document.getElementById("textarea").value = document.getElementById("textarea").value + "\n." +
+                    data[i - 1].name.toLowerCase() + ": { background: url('" + canvas.toDataURL() + "') }";
+            setTimeout(function () {
+                loadNext();
+            }, 500);
         };
 
         imageObj.src = dataURL;
-
     }
 
-    loadNext()
+    loadNext();
 </script>
 </body>
 </html>
